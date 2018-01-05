@@ -1,4 +1,4 @@
-# DigitalWatermarkinginimages
+# Digital Watermarking in images
 ## Introduction 
 Digital watermarking is the process by which an image is coded(embedded) with an owner's watermark. 
 The file could be an image, audio, video or text. Nowadays, digital watermarking has many applications such
