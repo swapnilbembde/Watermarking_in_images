@@ -14,9 +14,9 @@ Watermark can be implemented on the images with three following techniques as fo
 * Watermarking in Frequency domain
 * Watermarking in Hybrid domain
 
-## Getting Started 
+## About 
 This app includes variety of options of watermarking using all the three techniques.
-This also provides a comparision between outputs from different techniques. 
+This also provides a comparision between outputs from different techniques. Output produced is a gray scale image.
 
 <p align="center">
  <img src= 'images/SPATIAL-3.jpg' />
