@@ -18,4 +18,6 @@ Watermark can be implemented on the images with three following techniques as fo
 This app includes variety of options of watermarking using all the three techniques.
 This also provides a comparision between outputs from different techniques. 
 
-### SPATIAL DOMAIN WATERMARKING
+<p align="center">
+ <img src= 'images/SPATIAL-3.jpg' />
+</p>
