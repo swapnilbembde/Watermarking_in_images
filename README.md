@@ -16,4 +16,6 @@ Watermark can be implemented on the images with three following techniques as fo
 
 ## Getting Started 
 This app includes variety of options of watermarking using all the three techniques.
-This also provides a comparision between outputs from different techniques.
+This also provides a comparision between outputs from different techniques. 
+
+### SPATIAL DOMAIN WATERMARKING
