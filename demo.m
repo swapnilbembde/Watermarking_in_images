@@ -20,8 +20,6 @@ imshow(A,'DisplayRange',[]), title('Selected cover image');
     end
     if chos==2
     [fname pname]=uigetfile('*.jpg','select the Watermark');
-    %eval('imageinput=imread(fname)');
-    %imageinput=imread(fname);
     imageinput=imread(fname);
     W2=rgb2gray(imageinput);
     W = imresize(W2,size(A));
@@ -66,14 +64,6 @@ imshow(W,'DisplayRange',[]), title('Selected Watermarking image');
             dct_max = real_dct_sort(1, 2:k);
             disp(size(dct_max));
 
-            %{
-            water = randn(1,k-1);
-            disp('water');
-            disp('dft_max');
-            disp(size(water));
-            disp(size(dft_max));
-            %}
-
             alpha = 0.0001;
 
             watermarked = [];
@@ -93,19 +83,15 @@ imshow(W,'DisplayRange',[]), title('Selected Watermarking image');
             dct_b = dct2(img1);
 
             for j=1:k-1
-            %     dft_a(index(j)) = dft_a(index(j)) + (alpha*abs(dft_a(index(j)))*water(j));
                 extracted(j) = (dct_b(index(j)) - dct_a(index(j)))/(alpha*abs(dct_a(index(j))));
-            %     watermarked(j) = dft_max(j) + (alpha*abs(dft_max)*water(j));
             end
 
             for c = 1:10^2
-               % waitbar(c/10^2)
                 rand_seq = randn(1,k-1);
                 if(c == 25)
                     rand_seq = water_dct1(1, 1:k-1);
                 end
                 SIM_p(c) = sum(extracted.*rand_seq);
-            %     sqrt(sum(kaala_paani.*kaala_paani));
 end
 
 plot(abs(SIM_p));
@@ -135,22 +121,12 @@ plot(abs(SIM_p));
 
         k = water_a*water_b;
 
-        % [real_dft_sort, index] = sort(abs(real(dft_a)), 'descend');
         [real_dft_sort, index] = sort(abs(dft_a), 'descend');
-        % [real_dft_sort, index] = sort(abs(imag(dft_a)), 'descend');
         disp(size(real_dft_sort));
 
         dft_max = [];
         dft_max = real_dft_sort(1, 2:k);
         disp(size(dft_max));
-
-        %{
-        water = randn(1,k-1);
-        disp('water');
-        disp('dft_max');
-        disp(size(water));
-        disp(size(dft_max));
-        %}
 
         alpha = 0.001;
 
@@ -158,7 +134,6 @@ plot(abs(SIM_p));
         dft_c = dft_a;
         for j=1:k-1
             dft_c(index(j)) = dft_a(index(j)) + (alpha*abs(dft_a(index(j)))*water_dft1(j));
-        %     watermarked(j) = dft_max(j) + (alpha*abs(dft_max)*water(j));
         end
 
         dft_b = reshape(dft_c, a, b);
@@ -166,7 +141,6 @@ plot(abs(SIM_p));
         figure;
         imshow(uint8(watermarked_img));
 
-        %imwrite(uint8(watermarked_img), 'watermarked_image.jpg');
         imwrite(uint8(watermarked_img), 'watermarked_image.jpg', 'Mode', 'lossy', 'Quality', 75);
         img1 = imread('watermarked_image', 'jpg');
         figure;
@@ -174,19 +148,15 @@ plot(abs(SIM_p));
         dft_b = fftshift(fft2(img1));
 
         for j=1:k-1
-        %     dft_a(index(j)) = dft_a(index(j)) + (alpha*abs(dft_a(index(j)))*water(j));
             kaala_paani(j) = (dft_b(index(j)) - dft_a(index(j)))/(alpha*abs(dft_a(index(j))));
-        %     watermarked(j) = dft_max(j) + (alpha*abs(dft_max)*water(j));
         end
 
         for c = 1:10^2
-        %     waitbar(c/10^2)
             rand_seq = randn(1,k-1);
             if(c == 25)
                 rand_seq = water_dft1(1, 1:k-1);
             end
             SIM_p(c) = sum(kaala_paani.*rand_seq);
-        %     sqrt(sum(kaala_paani.*kaala_paani));
         end
 
         plot(abs(SIM_p));
@@ -206,7 +176,6 @@ imshow(LL,'DisplayRange',[]), title('3 level dwt of cover image');
         watermark=im2double(W2);
 watermark=imresize(watermark,[2048 2048]);
 %figure(3)
-%imshow(uint8(watermark));title('watermark image')
 [WF1,WF2]= wfilters('haar', 'd');
 [L_L,L_H,H_L,H_H] = dwt2(watermark,'haar','d');
 [L_L1,L_H1,H_L1,H_H1] = dwt2(L_L,'haar','d');
@@ -219,13 +188,10 @@ imshow(L_L2,'DisplayRange',[]), title('3 level dwt of watermark image');
         %computing level-1 idwt2
 Watermarkedimage_level1= idwt2(Watermarkedimage,LH2,HL2,HH2,'haar');
 %figure(5)
-%imshow(Watermarkedimage_level1,'DisplayRange',[]), title('Watermarkedimage level1');
 
 %computing level-2 idwt2
 Watermarkedimage_level2=idwt2(Watermarkedimage_level1,LH1,HL1,HH1,'haar');
 %figure(6)
-%imshow(Watermarkedimage_level2,'DisplayRange',[]), title('Watermarkedimage level2');
-
 
 %computing level-3 idwt2
 Watermarkedimage_final=idwt2(Watermarkedimage_level2,LH,HL,HH,'haar');
