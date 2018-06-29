@@ -21,3 +21,19 @@ This also provides a comparision between outputs from different techniques.
 <p align="center">
  <img src= 'images/SPATIAL-3.jpg' />
 </p>
+
+### SPATIAL DOMAIN WATERMARKING
+
+<p align="center">
+ <img src= 'images/SPATIAL.jpg' />
+</p>
+
+### HYBRID DOMAIN WATERMARKING
+<p align="center">
+ <img src= 'images/SPATIAL-2.jpg' />
+</p>
+
+### SPECTRAL DOMAIN WATERMARKING
+<p align="center">
+ <img src= 'images/SPATIAL-4.jpg' />
+</p>
